@@ -29,30 +29,23 @@ class BananaParser
       result << @page.search('span.mp_name').to_a.map{ |x| x.children.to_a[0].content }
       @page = next_button.click
       ######
-      break if next_button.href == 'https://banana.by/index.php?cstart=3&'
+      # break if next_button.href == 'https://banana.by/index.php?cstart=3&'
       ######
     end
-
     puts result.flatten
   end
 end
 
 
-banana = BananaParser.new
-banana.call
+tests = RSpec.describe 'BananaParser' do
+  context 'sign_in' do
+    it 'when sign_in button present' do
+      banana = BananaParser.new
+      banana.instance_variable_set(:@sign_in_button, nil)
+      expect(banana.sign_in).to eq(nil)
+    end
+  end
+end
 
-# tests = RSpec.describe 'BananaParser' do
-#   before do
-#     let(:page) { Mechanize::Page.new }
-#     let(:sign_in_button) { Mechanize::Page::Link.new('', '', '') }
-#   end
+puts tests.run
 
-#   content 'sign_in' do
-#     it '' do
-#       banana = BananaParser.new
-#       expect(banana.sign_in).to eq(false)
-#     end
-#   end
-# end
-
-# puts tests.run 
