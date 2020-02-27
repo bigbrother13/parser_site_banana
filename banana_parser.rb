@@ -1,6 +1,8 @@
 require 'pry'
 require 'mechanize'
 require 'rspec'
+require 'capybara'
+require 'csv'
 
 class BananaParser
   def initialize
@@ -37,15 +39,18 @@ class BananaParser
 end
 
 
-tests = RSpec.describe 'BananaParser' do
-  context 'sign_in' do
-    it 'when sign_in button present' do
-      banana = BananaParser.new
-      banana.instance_variable_set(:@sign_in_button, nil)
-      expect(banana.sign_in).to eq(nil)
-    end
-  end
-end
+# tests = RSpec.describe 'BananaParser' do
+#   context 'sign_in' do
+#     it 'when sign_in button present' do
+#       banana = BananaParser.new
+#       banana.instance_variable_set(:@sign_in_button, nil)
+#       expect(banana.sign_in).to eq(nil)
+#     end
+#   end
+# end
 
-puts tests.run
+
+
+
+# puts tests.run
 
